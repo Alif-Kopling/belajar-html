@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio | Al</title>
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --card: #121219;
+      --text: #e8e8ea;
+      --muted: #a9a9b1;
+      --gold: #f4c430; /* saffron gold */
+      --accent: #ffd66b;
+      --ring: rgba(244,196,48,0.35);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Noto Sans", Arial;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(244,196,48,0.08), transparent 60%),
+                  radial-gradient(900px 600px at 10% 110%, rgba(244,196,48,0.06), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    /* nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px);
+      background: linear-gradient( to bottom, rgba(11,11,15,0.85), rgba(11,11,15,0.55));
+      border-bottom: 1px solid rgba(244,196,48,0.12);
+    }
+    .nav-inner { max-width: 1080px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 16px; }
+    .brand { font-weight: 700; letter-spacing: .5px; }
+    .brand .dot { color: var(--gold); }
+    .spacer { flex: 1; }
+    .nav a { color: var(--text); text-decoration: none; padding: 8px 10px; border-radius: 999px; font-size: 14px; }
+    .nav a:hover { background: rgba(244,196,48,0.1); }
+    .cta { background: linear-gradient(135deg, var(--gold), var(--accent)); color: #111; font-weight: 700; }
+    .cta:hover { filter: brightness(1.05); }
+
+    /* container */
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 24px 16px; }
+
+    /* hero */
+    .hero { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 24px; padding: 56px 0 24px; }
+    .title { font-size: clamp(28px, 4vw, 48px); line-height: 1.15; font-weight: 800; }
+    .title .gold { color: var(--gold); }
+    .subtitle { color: var(--muted); margin-top: 8px; }
+    .actions { display:flex; gap:12px; margin-top:16px; }
+    .btn { border:1px solid rgba(244,196,48,0.35); color: var(--text); background: #15151b; padding: 10px 14px; border-radius: 12px; text-decoration: none; display:inline-flex; align-items:center; gap:8px; }
+    .btn:hover { box-shadow: 0 0 0 4px var(--ring); }
+    .pfp {
+      width: 100%; aspect-ratio: 1/1; border-radius: 24px; overflow: hidden; position: relative;
+      border: 1px solid rgba(244,196,48,0.2); background: #0f0f14; box-shadow: 0 10px 60px rgba(0,0,0,.5);
+    }
+    .pfp img { width: 100%; height: 100%; object-fit: cover; display: block; filter: contrast(1.05) saturate(1.05); }
+    .pfp .badge { position:absolute; bottom:12px; left:12px; background: rgba(15,15,18,.75); border:1px solid rgba(244,196,48,0.25); padding:6px 10px; border-radius: 10px; font-size:12px; }
+
+    /* section headers */
+    section { padding: 56px 0; }
+    .sec-head { display:flex; align-items:end; justify-content: space-between; margin-bottom: 18px; }
+    .sec-title { font-size: 24px; font-weight: 800; }
+    .sec-note { color: var(--muted); font-size: 14px; }
+
+    /* cards grid */
+    .grid { display:grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { grid-column: span 4; background: linear-gradient(180deg, rgba(255,214,107,0.06), rgba(255,214,107,0.02)); border:1px solid rgba(244,196,48,0.18); border-radius: 16px; padding: 16px; }
+    .card h3 { margin: 0 0 8px; }
+    .card p { color: var(--muted); }
+
+    /* meme wall */
+    .meme-wall { display:grid; grid-template-columns: repeat(6,1fr); gap:12px; }
+    .meme { aspect-ratio: 1/1; border-radius: 14px; overflow: hidden; border:1px solid rgba(244,196,48,0.18); background:#15151b; display:flex; align-items:center; justify-content:center; font-size:14px; text-align:center; padding:10px; }
+    .meme img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    /* about */
+    .about { display:grid; grid-template-columns: .9fr 1.1fr; gap:16px; }
+    .timeline { border-left:2px dashed rgba(244,196,48,0.4); padding-left:14px; }
+    .t-item { margin-bottom:14px; }
+    .t-item .when { font-size:12px; color:var(--muted); }
+
+    /* contact */
+    .contact { display:grid; grid-template-columns: 1fr 1fr; gap:16px; }
+    .field { display:flex; flex-direction:column; gap:6px; }
+    input, textarea { background:#111118; color:var(--text); border:1px solid rgba(244,196,48,0.22); padding:12px; border-radius:12px; outline:none; }
+    textarea { min-height: 120px; resize: vertical; }
+    .copy { font-size: 12px; color: var(--muted); cursor:pointer; }
+    .copy:hover { color: var(--gold); }
+
+    /* footer */
+    footer { padding: 24px 16px 48px; color: var(--muted); text-align: center; }
+
+    /* responsive */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .card { grid-column: span 6; }
+      .meme-wall { grid-template-columns: repeat(3,1fr); }
+    }
+    @media (max-width: 560px) {
+      .card { grid-column: span 12; }
+      .meme-wall { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
+</head>
+<body>
+  <!-- nav -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">al<span class="dot">.</span>port</div>
+      <div class="spacer"></div>
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#meme">meme</a>
+      <a href="#contact" class="cta">contact</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <!-- home / hero -->
+    <section id="home" class="hero">
+      <div>
+        <h1 class="title">hai, aku <span class="gold">Al</span> — pelajar rpl yang ngulik web dev😹</h1>
+        <p class="subtitle">stack: html, css, js (sedang belajar). hobi: debug sampai lupa waktu, terus ngelawak biar error-nya pergi.</p>
+        <div class="actions">
+          <a class="btn" href="#about">tentang aku</a>
+          <a class="btn" href="#contact">hubungi aku</a>
+          <a class="btn" href="#meme">liat meme</a>
+        </div>
+      </div>
+      <div class="pfp">
+        <!-- ganti src ini pake fotomu -->
+        <img src="lele.jpg" alt="foto profil placeholder" />
+        <div class="badge">📸 klik gambar di html untuk ganti url fotomu</div>
+      </div>
+    </section>
+
+    <!-- projects (contoh) -->
+    <section id="projects">
+      <div class="sec-head">
+        <div class="sec-title">projects pilihan</div>
+        <div class="sec-note">yang jadi, bukan cuma jadi wacana 😼</div>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <h3>landing page sekolah</h3>
+          <p>single file, fokus aksesibilitas dan performa. skor lighthouse hijau semua (bukan iri tetangga, emang ijo 😎).</p>
+        </article>
+        <article class="card">
+          <h3>todo app offline</h3>
+          <p>vanilla js + localStorage. fitur drag, filter, dan export json “biar keliatan serius”.</p>
+        </article>
+        <article class="card">
+          <h3>galeri meme generator</h3>
+          <p>canvas api buat nambah teks di atas gambar, cocok buat perang meme sehat sama temen kelas.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- about -->
+    <section id="about">
+      <div class="sec-head">
+        <div class="sec-title">about</div>
+        <div class="sec-note">singkat padat, no drama</div>
+      </div>
+      <div class="about">
+        <div class="card">
+          <h3>siapa aku?</h3>
+          <p>aku al, siswa kelas xi rpl — suka ngulik front-end dan ngasih sentuhan humor biar belajar ga kaku. target: magang/part-time web dev, lanjut kerja di jepang someday.</p>
+          <p><strong>skill utama:</strong> html5, css3 (grid/flex), javascript dasar, github, figma dasar.</p>
+          <p><strong>nilai plus:</strong> desain clean, dark theme, dan bikin ui terasa ringan.</p>
+        </div>
+        <div class="card timeline">
+          <div class="t-item">
+            <div class="when">2024 → now</div>
+            <div>belajar serius front-end: semantik html, aksesibilitas, responsive.</div>
+          </div>
+          <div class="t-item">
+            <div class="when">2025</div>
+            <div>bangun portofolio live + ngerjain mini project tiap bulan.</div>
+          </div>
+          <div class="t-item">
+            <div class="when">target</div>
+            <div>punya showcase yang cukup buat apply magang dan freelance kecil-kecilan.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- meme -->
+    <section id="meme">
+      <div class="sec-head">
+        <div class="sec-title">meme corner</div>
+        <div class="sec-note">kerja boleh tegang, ui tetap santai 🤙</div>
+      </div>
+      <div class="meme-wall">
+        <!-- ganti ke url gambar favoritmu -->
+        <div class="meme"><img src="https://i.imgflip.com/30b1gx.jpg" alt="drake meme" /></div>
+        <div class="meme"><img src="https://i.imgflip.com/1bij.jpg" alt="distracted boyfriend" /></div>
+        <div class="meme"><img src="https://i.imgflip.com/26am.jpg" alt="one does not simply" /></div>
+        <div class="meme">drop gambar di sini 😹</div>
+        <div class="meme">html > vibes > tidur</div>
+        <div class="meme">debug sampai sukses ✔️</div>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section id="contact">
+      <div class="sec-head">
+        <div class="sec-title">contact</div>
+        <div class="sec-note">dm cepat, email formal — pilih sesuai mood</div>
+      </div>
+      <div class="contact">
+        <div class="card">
+          <div class="field">
+            <label for="name">nama</label>
+            <input id="name" placeholder="tulis nama kamu" />
+          </div>
+          <div class="field">
+            <label for="email">email</label>
+            <input id="email" placeholder="emailmu" />
+          </div>
+          <div class="field">
+            <label for="msg">pesan</label>
+            <textarea id="msg" placeholder="ketik pesan di sini"></textarea>
+          </div>
+          <button class="btn" id="sendBtn">kirim (demo)</button>
+          <p class="sec-note" id="sendNote" aria-live="polite"></p>
+        </div>
+        <div class="card">
+          <h3>about contact</h3>
+          <p>email: <span id="myMail">al@egmail.com</span> <span class="copy" id="copyMail">— klik buat copy</span></p>
+          <p>lokasi: subang, id</p>
+          <p class="sec-note">note: form di kiri hanya simulasi. untuk real, sambungkan ke backend atau layanan form.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> al.port — dibuat dengan html+css+js. tema hitam-emas biar terlihat mahal, isinya tetep hemat 😹
+  </footer>
+
+  <script>
+    // ganti foto profil dengan prompt url ketika diklik
+    document.querySelector('.pfp img').addEventListener('click', () => {
+      const url = prompt('tempel url gambarmu:');
+      if (!url) return;
+      document.querySelector('.pfp img').src = url;
+    });
+
+    // tombol kirim demo
+    const btn = document.getElementById('sendBtn');
+    const note = document.getElementById('sendNote');
+    btn.addEventListener('click', () => {
+      note.textContent = 'makasih! (demo) pesannya belum beneran terkirim.';
+    });
+
+    // copy email
+    document.getElementById('copyMail').addEventListener('click', async () => {
+      const mail = document.getElementById('myMail').textContent.trim();
+      try { await navigator.clipboard.writeText(mail); alert('email dicopy: ' + mail); } catch(e) { alert('gagal copy, salin manual ya'); }
+    });
+
+    // tahun footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // drag & drop meme (opsional):
+    const memeWall = document.querySelector('.meme-wall');
+    memeWall.addEventListener('dragover', (e)=>{ e.preventDefault(); });
+    memeWall.addEventListener('drop', (e)=>{
+      e.preventDefault();
+      const file = e.dataTransfer.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const div = document.createElement('div');
+        div.className = 'meme';
+        const img = document.createElement('img');
+        img.src = reader.result;
+        img.alt = 'meme upload';
+        div.appendChild(img);
+        memeWall.prepend(div);
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
