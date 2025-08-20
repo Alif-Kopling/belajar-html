@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Pelajar Meme</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .cv-container {
+      width: 70%;
+      margin: 40px auto;
+      background: rgba(255,255,255,0.8);
+      border-radius: 15px;
+      padding: 20px 40px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    .header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    }
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #ff5e62;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 18px;
+      color: #444;
+    }
+    section {
+      margin-bottom: 20px;
+    }
+    section h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #ff9966;
+      border-left: 5px solid #ff5e62;
+      padding-left: 10px;
+    }
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .meme-box {
+      margin-top: 25px;
+      text-align: center;
+      background: #fffbe6;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    }
+    .meme-box img {
+      max-width: 200px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .meme-box p {
+      font-style: italic;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <!-- Header -->
+    <div class="header">
+      <img src="lele.jpg" alt="Foto Profil">
+      <div>
+        <h1>Alif (Al)</h1>
+        <h2>Siswa XI RPL | SMK Negeri 2 Subang</h2>
+      </div>
+    </div>
+
+    <!-- Tentang Saya -->
+    <section>
+      <h3>👋 Tentang Saya</h3>
+      <p>Seorang pelajar yang suka ngulik coding, desain, dan kadang suka nge-meme biar hidup ga terlalu serius 😹. Punya semangat buat belajar hal baru dan kerja tim.</p>
+    </section>
+
+    <!-- Pendidikan -->
+    <section>
+      <h3>🎓 Pendidikan</h3>
+      <ul>
+        <li>SMK Negeri 2 Subang – XI RPL (2024 - sekarang)</li>
+        <li>SMP Negeri 1 xjati – Lulus 2023</li>
+      </ul>
+    </section>
+
+    <!-- Skill -->
+    <section>
+      <h3>💡 Skill</h3>
+      <ul>
+        <li>HTML, CSS, JavaScript (basic to intermediate)</li>
+        <li>Desain UI/UX dasar</li>
+        <li>Editing foto & meme 😹</li>
+        <li>Problem solving & teamwork</li>
+      </ul>
+    </section>
+
+    <!-- Meme Section -->
+    <div class="meme-box">
+      <img src="https://i.imgflip.com/4/30b1gx.jpg" alt="Meme Example">
+      <p>"Ketika bug akhirnya hilang... tapi muncul lagi setelah di-refresh"</p>
+    </div>
+  </div>
+</body>
+</html>
